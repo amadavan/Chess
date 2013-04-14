@@ -52,5 +52,26 @@ public class Board {
 		else
 			return null;
 	}
+	
+	public Square getSW(Square s) {
+		if ( 0 <= s.getY() - 1 && 0 <= s.getX() - 1 )
+			return grid.get(s.getY() - 1).get(s.getX() - 1);
+		else
+			return null;
+	}
+	
+	public Square getW(Square s) {
+		if ( 0 <= s.getX() - 1 )
+			return grid.get(s.getY()).get(s.getX() - 1);
+		else
+			return null;
+	}
+	
+	public Square getNW(Square s) {
+		if ( grid.size() > s.getY() + 1 && 0 <= s.getX() - 1 )
+			return grid.get(s.getY() + 1).get(s.getX() - 1);
+		else
+			return null;
+	}
 
 }
