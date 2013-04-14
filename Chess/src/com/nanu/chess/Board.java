@@ -73,5 +73,19 @@ public class Board {
 		else
 			return null;
 	}
+	
+	public boolean isValid(Square s) {
+		if ( s.getY() >= 0 && s.getY() < grid.size() && s.getX() >= 0 && s.getY() < grid.size() )
+			return true;
+		else
+			return false;
+	}
+	
+	public boolean isValid(int x, int y) {
+		if ( y >= 0 && y < grid.size() && x >= 0 && x < grid.size() )
+			return true;
+		else
+			return false;
+	}
 
 }
