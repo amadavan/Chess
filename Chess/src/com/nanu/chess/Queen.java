@@ -2,10 +2,10 @@ package com.nanu.chess;
 
 import java.util.ArrayList;
 
-public class Queen implements Piece {
+public class Queen extends Piece {
 
-	@Override
-	public ArrayList<Square> getLegalMoves() {
+	public ArrayList<Square> getLegalMoves(ArrayList<ArrayList<Square>> grid) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 

@@ -1,11 +1,13 @@
 package com.nanu.chess;
 
 public class Square {
-	int _x, _y;
+	private int _x, _y;
+	private boolean _hasPiece;
 
 	public Square(int x, int y) {
 		_x = x;
 		_y = y;
+		_hasPiece = false;
 	}
 	
 	public int getX() {
@@ -14,6 +16,14 @@ public class Square {
 	
 	public int getY() {
 		return _y;
+	}
+	
+	public void setPiece(boolean hasPiece) {
+		_hasPiece = hasPiece;
+	}
+	
+	public boolean hasPiece() {
+		return _hasPiece;
 	}
 
 }
