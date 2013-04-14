@@ -7,11 +7,11 @@ public class Bishop extends Piece {
 	public ArrayList<Square> getLegalMoves(Board b) {
 		ArrayList<Square> moves = new ArrayList<Square> ();
 		for ( int i = 0; i < 4; i++ )
-			getDiagonalMoves(b, moves, i);
+			getDiagonalMoves(b, i, moves);
 		return moves;
 	}
 	
-	private void getDiagonalMoves(Board b, ArrayList<Square> moves, int direction) {
+	private void getDiagonalMoves(Board b, int direction, ArrayList<Square> moves) {
 		Square temp = _square;
 		while ( true ) {
 			switch(direction) {
@@ -21,8 +21,13 @@ public class Bishop extends Piece {
 				case (3): temp = b.getSW(temp); break;
 			}
 			if ( temp != null ) {
-				moves.add(temp);
-				if ( temp.hasPiece() )
+				if ( !temp.hasPiece() )
+					moves.add(temp);
+				else if ( temp.getOwner() != _team ) {
+					moves.add(temp);
+					break;
+				}
+				else
 					break;
 			}
 			else

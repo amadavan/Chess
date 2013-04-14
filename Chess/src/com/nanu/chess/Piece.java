@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public abstract class Piece {
 	
 	protected Square _square;
+	protected int _team;
 	
 	public abstract ArrayList<Square> getLegalMoves(Board b);
 	
