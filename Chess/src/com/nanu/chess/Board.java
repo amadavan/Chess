@@ -74,6 +74,13 @@ public class Board {
 			return null;
 	}
 	
+	public Square getSquare(int x, int y) {
+		if ( isValid(x,y) )
+			return grid.get(y).get(x);
+		else
+			return null;
+	}
+	
 	public boolean isValid(Square s) {
 		if ( s.getY() >= 0 && s.getY() < grid.size() && s.getX() >= 0 && s.getY() < grid.size() )
 			return true;
