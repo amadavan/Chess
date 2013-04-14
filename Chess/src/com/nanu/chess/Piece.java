@@ -5,4 +5,5 @@ public interface Piece {
 	// move pattern
 	
 	// name
+	//fuck eclipse
 }
