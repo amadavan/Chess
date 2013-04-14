@@ -1,6 +1,6 @@
 package com.nanu.chess;
 
-public class Piece {
+public interface Piece {
 	// team
 	// move pattern
 	
