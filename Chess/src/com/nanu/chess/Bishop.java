@@ -21,9 +21,9 @@ public class Bishop extends Piece {
 				case (3): temp = b.getSW(temp); break;
 			}
 			if ( temp != null ) {
-				if ( !temp.hasPiece() )
+				if ( temp.getTeam() == null )
 					moves.add(temp);
-				else if ( temp.getOwner() != _team ) {
+				else if ( !temp.getTeam().equals(_team) ) {
 					moves.add(temp);
 					break;
 				}

@@ -11,10 +11,13 @@ public class Knight extends Piece {
 			for ( int j = -2; j <= 2; j++ ) {
 				if ( i != 0 && j != 0 && i != j && b.isValid(j, i) ) {
 					temp = b.getSquare(j,i);
-					if ( !temp.hasPiece() )
-						moves.add(temp);
-					else if ( temp.getOwner() != _team )
-						moves.add(temp);
+					if ( temp != null ) {
+						if ( temp.getTeam() == null )
+							moves.add(temp);
+						else if ( !temp.getTeam().equals(_team) ) {
+							moves.add(temp);
+						}
+					}
 				}
 			}
 		}

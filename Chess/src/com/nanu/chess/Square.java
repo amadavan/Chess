@@ -7,7 +7,7 @@ public class Square {
 	public Square(int x, int y) {
 		_x = x;
 		_y = y;
-		_hasPiece = false;
+		_team = null;
 	}
 	
 	public int getX() {
@@ -20,6 +20,10 @@ public class Square {
 	
 	public void setTeam(Team team) {
 		_team = team;
+	}
+	
+	public Team getTeam() {
+		return _team;
 	}
 
 }
