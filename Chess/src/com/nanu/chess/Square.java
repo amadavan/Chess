@@ -18,19 +18,6 @@ public class Square {
 		return _y;
 	}
 	
-	public Square getEast() {
-		return new Square(this._x - 1, this._y);
-	}
-	public Square getWest() {
-		return new Square(this._x + 1, this._y);
-	}
-	public Square getNorth() {
-		return new Square(this._x, this._y + 1);
-	}
-	public Square getSouth() {
-		return new Square(this._x, this._y - 1);
-	}
-	
 	public void setPiece(boolean hasPiece) {
 		_hasPiece = hasPiece;
 	}
