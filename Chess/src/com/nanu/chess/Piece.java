@@ -4,10 +4,9 @@ import java.util.ArrayList;
 
 public abstract class Piece {
 	
-	private Square _square;
-	// team
-	// move pattern
-	public abstract ArrayList<Square> getLegalMoves(ArrayList< ArrayList<Square> > grid);
+	protected Square _square;
+	
+	public abstract ArrayList<Square> getLegalMoves(ArrayList<ArrayList<Square>> grid);
 	
 	public Square getSquare() {
 		return _square;
@@ -16,5 +15,4 @@ public abstract class Piece {
 	public void setSquare(Square square) {
 		_square = square;
 	}
-	// name
 }
