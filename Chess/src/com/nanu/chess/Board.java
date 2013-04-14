@@ -45,5 +45,12 @@ public class Board {
 		else
 			return null;
 	}
+	
+	public Square getS(Square s) {
+		if ( 0 <= s.getY() - 1 )
+			return grid.get(s.getY() - 1).get(s.getX());
+		else
+			return null;
+	}
 
 }
