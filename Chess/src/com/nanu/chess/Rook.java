@@ -5,28 +5,34 @@ import java.util.ArrayList;
 public class Rook extends Piece {
 
 	public ArrayList<Square> getLegalMoves(Board b) {
-		// TODO Auto-generated method stub
-		
-		ArrayList<Square> _moves = new ArrayList<Square>();
-		Square _temp = this._square;
-		while(b.getE(_temp) != null) {
-			_moves.add(_temp);
-			_temp = b.getE(_temp);
+		ArrayList<Square> moves = new ArrayList<Square> ();
+		for ( int i = 0; i < 4; i++ )
+			getMoves(b, i, moves);
+		return moves;
+	}
+	
+	private void getMoves(Board b, int direction, ArrayList<Square> moves) {
+		Square temp = _square;
+		while(true) {
+			switch(direction) {
+				case (0): temp = b.getE(temp); break;
+				case (1): temp = b.getW(temp); break;
+				case (2): temp = b.getS(temp); break;
+				case (3): temp = b.getN(temp); break;
+			}
+			if ( temp != null ) {
+				if ( !temp.hasPiece() )
+					moves.add(temp);
+				else if ( temp.getOwner() != _team ) {
+					moves.add(temp);
+					break;
+				}
+				else
+					break;
+			}
+			else
+				break;
 		}
-		while(b.getW(_temp) != null) {
-			_moves.add(_temp);
-			_temp = b.getW(_temp);
-		}
-		while(b.getN(_temp) != null) {
-			_moves.add(_temp);
-			_temp = b.getN(_temp);
-		}
-		while(b.getS(_temp) != null) {
-			_moves.add(_temp);
-			_temp = b.getS(_temp);
-		}
-		
-		return null;
 	}
 
 
