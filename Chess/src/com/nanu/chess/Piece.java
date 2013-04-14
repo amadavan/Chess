@@ -6,7 +6,7 @@ public abstract class Piece {
 	
 	protected Square _square;
 	
-	public abstract ArrayList<Square> getLegalMoves(ArrayList<ArrayList<Square>> grid);
+	public abstract ArrayList<Square> getLegalMoves(Board b);
 	
 	public Square getSquare() {
 		return _square;
