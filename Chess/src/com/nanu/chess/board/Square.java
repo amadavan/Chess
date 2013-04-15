@@ -1,15 +1,15 @@
 package com.nanu.chess.board;
 
-import com.nanu.chess.support.Team;
+import com.nanu.chess.pieces.Piece;
 
 public class Square {
 	private int _x, _y;
-	private Team _team;
+	private Piece _piece;
 
 	public Square(int x, int y) {
 		_x = x;
 		_y = y;
-		_team = null;
+		_piece = null;
 	}
 	
 	public int getX() {
@@ -20,12 +20,12 @@ public class Square {
 		return _y;
 	}
 	
-	public void setTeam(Team team) {
-		_team = team;
+	public void setPiece(Piece piece) {
+		_piece = piece;
 	}
 	
-	public Team getTeam() {
-		return _team;
+	public Piece getPiece() {
+		return _piece;
 	}
 
 }
