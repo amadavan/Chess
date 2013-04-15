@@ -38,10 +38,10 @@ public class Pawn extends Piece {
 					moves.add(b.getS(b.getS(temp)));
 				}
 			}
-			if(b.getNE(temp).getPiece().getTeam().equals(Team.BLACK)) {
+			if(b.getNE(temp).getPiece().getTeam().equals(Team.WHITE)) {
 				moves.add(b.getSE(temp));
 			}
-			if(b.getNW(temp).getPiece().getTeam().equals(Team.BLACK)) {
+			if(b.getNW(temp).getPiece().getTeam().equals(Team.WHITE)) {
 				moves.add(b.getSW(temp));
 			}
 		}
