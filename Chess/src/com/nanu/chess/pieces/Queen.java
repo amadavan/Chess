@@ -8,19 +8,19 @@ import com.nanu.chess.support.Team;
 
 public class Queen extends Piece {
 
-	public Queen(Team team, Square square) {
-		super(team, square);
+	public Queen(Team team) {
+		super(team);
 	}
 
-	public ArrayList<Square> getLegalMoves(Board b) {
+	public ArrayList<Square> getLegalMoves(Board b, Square s) {
 		ArrayList<Square> moves = new ArrayList<Square> ();
 		for ( int i = 0; i < 8; i++ )
-			getDiagonalMoves(b, i, moves);
+			getDiagonalMoves(b, s, i, moves);
 		return moves;
 	}
 	
-	private void getDiagonalMoves(Board b, int direction, ArrayList<Square> moves) {
-		Square temp = _square;
+	private void getDiagonalMoves(Board b, Square s, int direction, ArrayList<Square> moves) {
+		Square temp = s;
 		while ( true ) {
 			switch(direction) {
 				case (0): temp = b.getN(temp); break;

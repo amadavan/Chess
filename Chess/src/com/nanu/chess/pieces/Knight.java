@@ -8,17 +8,17 @@ import com.nanu.chess.support.Team;
 
 public class Knight extends Piece {
 
-	public Knight(Team team, Square square) {
-		super(team, square);
+	public Knight(Team team) {
+		super(team);
 	}
 
-	public ArrayList<Square> getLegalMoves(Board b) {
+	public ArrayList<Square> getLegalMoves(Board b, Square s) {
 		ArrayList<Square> moves = new ArrayList<Square> ();
 		Square temp;
 		for ( int i = -2; i <= 2; i++ ) {
 			for ( int j = -2; j <= 2; j++ ) {
 				if ( i != 0 && j != 0 && i != j && b.isValid(j, i) ) {
-					temp = b.getSquare(j,i);
+					temp = b.getSquare(s.getY()+j,s.getX()+i);
 					if ( temp != null ) {
 						if ( temp.getTeam() == null )
 							moves.add(temp);

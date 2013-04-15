@@ -8,19 +8,19 @@ import com.nanu.chess.support.Team;
 
 public class Rook extends Piece {
 
-	public Rook(Team team, Square square) {
-		super(team, square);
+	public Rook(Team team) {
+		super(team);
 	}
 
-	public ArrayList<Square> getLegalMoves(Board b) {
+	public ArrayList<Square> getLegalMoves(Board b, Square s) {
 		ArrayList<Square> moves = new ArrayList<Square> ();
 		for ( int i = 0; i < 4; i++ )
-			getMoves(b, i, moves);
+			getMoves(b, s, i, moves);
 		return moves;
 	}
 	
-	private void getMoves(Board b, int direction, ArrayList<Square> moves) {
-		Square temp = _square;
+	private void getMoves(Board b, Square s, int direction, ArrayList<Square> moves) {
+		Square temp = s;
 		while(true) {
 			switch(direction) {
 				case (0): temp = b.getE(temp); break;
