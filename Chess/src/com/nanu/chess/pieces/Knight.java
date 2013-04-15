@@ -20,11 +20,10 @@ public class Knight extends Piece {
 				if ( i != 0 && j != 0 && i != j && b.isValid(j, i) ) {
 					temp = b.getSquare(s.getY()+j,s.getX()+i);
 					if ( temp != null ) {
-						if ( temp.getTeam() == null )
+						if ( temp.getPiece() == null )
 							moves.add(temp);
-						else if ( !temp.getTeam().equals(_team) ) {
+						else if ( !temp.getPiece().getTeam().equals(_team) )
 							moves.add(temp);
-						}
 					}
 				}
 			}

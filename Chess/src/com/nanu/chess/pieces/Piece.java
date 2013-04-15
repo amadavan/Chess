@@ -16,4 +16,8 @@ public abstract class Piece {
 	
 	public abstract ArrayList<Square> getLegalMoves(Board b, Square s);
 	
+	public Team getTeam() {
+		return _team;
+	}
+	
 }
