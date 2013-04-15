@@ -4,30 +4,47 @@ import java.util.ArrayList;
 
 import com.nanu.chess.board.Board;
 import com.nanu.chess.board.Square;
+import com.nanu.chess.support.Team;
 
 public class Pawn extends Piece {
 	
-	public ArrayList<Square> getLegalMoves(Board b) {
+	public Pawn(Team team) {
+		super(team);
+	}
+	
+	public ArrayList<Square> getLegalMoves(Board b, Square s) {
 		// TODO Auto-generated method stub
-		Square temp = _square;
+		Square temp = s;
 		ArrayList<Square> moves = new ArrayList<Square>();
-		if(temp.getY() == 2 && b.getN(b.getN(temp)).hasPiece() == false) {
-			moves.add(b.getN(b.getN(temp)));
-		}
-		if(b.getNE(temp).getOwner() != temp.getOwner() || b.getNW(temp).getOwner() != temp.getOwner()) {
-			moves.add(b.getNE(temp));
-			moves.add(b.getNW(temp));
-		}
-		if(b.getN(temp) != null) {
-			if(temp.getY() == 2 && !b.getN(b.getN(temp)).hasPiece() && !b.getN(temp).hasPiece()) {
-				moves.add(b.getN(b.getN(temp)));
+		Team team = temp.getPiece().getTeam();
+		if(team.equals(Team.WHITE) ) {
+			if(b.getN(temp) != null) {
 				moves.add(b.getN(temp));
+				if(temp.getY() == 2 && temp.getPiece() == null) {
+					moves.add(b.getN(b.getN(temp)));
+				}
 			}
-			else if(!b.getN(temp).hasPiece()) {
-				moves.add(b.getN(temp));
+			if(b.getNE(temp).getPiece().getTeam().equals(Team.BLACK)) {
+				moves.add(b.getNE(temp));
 			}
-		}	
-			
+			if(b.getNW(temp).getPiece().getTeam().equals(Team.BLACK)) {
+				moves.add(b.getNW(temp));
+			}
+		}
+		else {
+			if(b.getS(temp) != null) {
+				moves.add(b.getS(temp));
+				if(temp.getY() == 7 && temp.getPiece() == null) {
+					moves.add(b.getS(b.getS(temp)));
+				}
+			}
+			if(b.getNE(temp).getPiece().getTeam().equals(Team.BLACK)) {
+				moves.add(b.getSE(temp));
+			}
+			if(b.getNW(temp).getPiece().getTeam().equals(Team.BLACK)) {
+				moves.add(b.getSW(temp));
+			}
+		}
 		return moves;
 	}
 
