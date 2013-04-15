@@ -13,7 +13,6 @@ public class Pawn extends Piece {
 	}
 	
 	public ArrayList<Square> getLegalMoves(Board b, Square s) {
-		// TODO Auto-generated method stub
 		Square temp = s;
 		ArrayList<Square> moves = new ArrayList<Square>();
 		Team team = temp.getPiece().getTeam();
