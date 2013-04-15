@@ -4,8 +4,13 @@ import java.util.ArrayList;
 
 import com.nanu.chess.board.Board;
 import com.nanu.chess.board.Square;
+import com.nanu.chess.support.Team;
 
 public class Knight extends Piece {
+
+	public Knight(Team team, Square square) {
+		super(team, square);
+	}
 
 	public ArrayList<Square> getLegalMoves(Board b) {
 		ArrayList<Square> moves = new ArrayList<Square> ();

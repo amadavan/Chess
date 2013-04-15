@@ -7,9 +7,14 @@ import com.nanu.chess.board.Square;
 import com.nanu.chess.support.Team;
 
 public abstract class Piece {
-	
-	protected Square _square;
+
 	protected Team _team;
+	protected Square _square;
+	
+	public Piece(Team team, Square square) {
+		_team = team;
+		_square = square;
+	}
 	
 	public abstract ArrayList<Square> getLegalMoves(Board b);
 	
@@ -20,4 +25,13 @@ public abstract class Piece {
 	public void setSquare(Square square) {
 		_square = square;
 	}
+	
+	public boolean move(Board b, Square square) {
+		if ( getLegalMoves(b).contains(square) ) {
+			_square = square;
+			return true;
+		}
+		return false;
+	}
+	
 }
