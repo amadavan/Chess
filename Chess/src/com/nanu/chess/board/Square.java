@@ -1,4 +1,6 @@
-package com.nanu.chess;
+package com.nanu.chess.board;
+
+import com.nanu.chess.support.Team;
 
 public class Square {
 	private int _x, _y;

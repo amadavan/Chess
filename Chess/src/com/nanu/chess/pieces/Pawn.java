@@ -1,6 +1,9 @@
-package com.nanu.chess;
+package com.nanu.chess.pieces;
 
 import java.util.ArrayList;
+
+import com.nanu.chess.board.Board;
+import com.nanu.chess.board.Square;
 
 public class Pawn extends Piece {
 	

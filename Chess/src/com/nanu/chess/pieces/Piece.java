@@ -1,6 +1,10 @@
-package com.nanu.chess;
+package com.nanu.chess.pieces;
 
 import java.util.ArrayList;
+
+import com.nanu.chess.board.Board;
+import com.nanu.chess.board.Square;
+import com.nanu.chess.support.Team;
 
 public abstract class Piece {
 	

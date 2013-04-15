@@ -1,4 +1,4 @@
-package com.nanu.chess;
+package com.nanu.chess.board;
 
 import java.util.ArrayList;
 

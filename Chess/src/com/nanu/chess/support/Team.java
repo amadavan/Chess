@@ -1,4 +1,4 @@
-package com.nanu.chess;
+package com.nanu.chess.support;
 
 public enum Team {
 	WHITE, BLACK;
