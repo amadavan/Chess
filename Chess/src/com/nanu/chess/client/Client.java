@@ -28,11 +28,11 @@ public class Client extends Thread {
 				_board.getSquare(move_square[0].trim().charAt(0)-'0', move_square[0].trim().charAt(1)-'0'),
 				_board.getSquare(move_square[1].trim().charAt(0)-'0', move_square[1].trim().charAt(1)-'0')
 		);
+		_boardPanel.repaint();
 	}
 	
 	private String getMove() {
-		_boardPanel.getMove();
-		return "";
+		return _boardPanel.getMove();
 	}
 	
 	private void reset(String teamParam) {
@@ -53,7 +53,7 @@ public class Client extends Thread {
 		}
 		switch(c) {
 			case MOVE: movePiece(params);
-			case GETMOVE:  System.out.println("Getting move"); getMove();
+			case GETMOVE: _connection.send(getMove());
 				break;
 			case RESET: reset(params);
 				break;

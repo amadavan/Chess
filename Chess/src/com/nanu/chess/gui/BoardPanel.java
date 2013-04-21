@@ -3,7 +3,6 @@ package com.nanu.chess.gui;
 import java.awt.Graphics;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.ArrayList;
 
 import javax.swing.JPanel;
 
@@ -29,7 +28,6 @@ public class BoardPanel extends JPanel {
 	}
 	
 	public void paintComponent(Graphics g) {
-		ArrayList< ArrayList<Square> > grid = _board.getGrid();
 		for ( int i = 0; i < 8; i++ ) {
 			for ( int j = 0; j < 8; j++ ) {
 				if ( ((i+j)%2 == 0 && _team.equals(Team.WHITE)) || ((i+j)%2 == 1 && _team.equals(Team.BLACK)) )
@@ -40,6 +38,11 @@ public class BoardPanel extends JPanel {
 						GUIConstants.PADDING+j*GUIConstants.SQUARE_HEIGHT,
 						GUIConstants.SQUARE_WIDTH,
 						GUIConstants.SQUARE_HEIGHT);
+				if ( _board.getSquare(i,j).getPiece() != null ) {
+					GUIConstants.piece.getIcon(_board.getSquare(i,j).getPiece()).paintIcon( this, g,
+							GUIConstants.PADDING+i*GUIConstants.SQUARE_WIDTH,
+							GUIConstants.PADDING+j*GUIConstants.SQUARE_HEIGHT);
+				}
 			}
 		}
 	}
@@ -62,23 +65,12 @@ public class BoardPanel extends JPanel {
 			else if ( start != null && start.getPiece().getLegalMoves(_board, start).contains(curSquare) ) {
 				end = curSquare;
 				validMove = true;
-			}	
-
-			System.out.println(curSquare.getX()+" "+curSquare.getY());
-			if ( curSquare.getPiece() != null )
-				System.out.println(curSquare.getPiece().getClass().toString());
-			if ( start != null ) {
-				System.out.println(start.getX()+" "+start.getY());
-				System.out.println( start.getPiece().getLegalMoves(_board, start).toString() );
 			}
-			if ( validMove )
-				System.out.println("Yes");
-			System.out.println();
-			
 		}
-		System.out.println(start.getX()+""+start.getY()+","+end.getX()+""+end.getY());
-		return getMove();
-//		return start.getX()+""+start.getY()+","+end.getX()+""+end.getY();
+		end.setPiece(start.getPiece());
+		start.setPiece(null);
+		repaint();
+		return (-start.getX()+7)+""+(-start.getY()+7)+","+(-end.getX()+7)+""+(-end.getY()+7);
 	}
 	
 	public class ClickListener extends MouseAdapter {

@@ -125,8 +125,6 @@ public class Board {
 		row.get(0).setPiece(new Rook(otherTeam));
 		row.get(1).setPiece(new Knight(otherTeam));
 		row.get(2).setPiece(new Bishop(otherTeam));
-		row.get(3).setPiece(new Queen(otherTeam));
-		row.get(4).setPiece(new King(otherTeam));
 		row.get(5).setPiece(new Bishop(otherTeam));
 		row.get(6).setPiece(new Knight(otherTeam));
 		row.get(7).setPiece(new Rook(otherTeam));
@@ -135,11 +133,22 @@ public class Board {
 		row.get(0).setPiece(new Rook(team));
 		row.get(1).setPiece(new Knight(team));
 		row.get(2).setPiece(new Bishop(team));
-		row.get(3).setPiece(new Queen(team));
-		row.get(4).setPiece(new King(team));
 		row.get(5).setPiece(new Bishop(team));
 		row.get(6).setPiece(new Knight(team));
 		row.get(7).setPiece(new Rook(team));
+
+		if ( team.equals(Team.WHITE) ) {
+			_grid.get(0).get(3).setPiece(new Queen(otherTeam));
+			_grid.get(0).get(4).setPiece(new King(otherTeam));
+			_grid.get(7).get(3).setPiece(new Queen(team));
+			_grid.get(7).get(4).setPiece(new King(team));
+		}
+		else {
+			_grid.get(0).get(4).setPiece(new Queen(otherTeam));
+			_grid.get(0).get(3).setPiece(new King(otherTeam));
+			_grid.get(7).get(4).setPiece(new Queen(team));
+			_grid.get(7).get(3).setPiece(new King(team));
+		}
 	}
 
 }
