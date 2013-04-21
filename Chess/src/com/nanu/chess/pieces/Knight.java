@@ -17,8 +17,8 @@ public class Knight extends Piece {
 		Square temp;
 		for ( int i = -2; i <= 2; i++ ) {
 			for ( int j = -2; j <= 2; j++ ) {
-				if ( i != 0 && j != 0 && i != j && b.isValid(j, i) ) {
-					temp = b.getSquare(s.getY()+j,s.getX()+i);
+				if ( i != 0 && j != 0 && i != j && i != -j && b.isValid(s.getX()+i, s.getY()+j) ) {
+					temp = b.getSquare(s.getX()+i, s.getY()+j);
 					if ( temp != null ) {
 						if ( temp.getPiece() == null )
 							moves.add(temp);

@@ -17,16 +17,20 @@ public class Pawn extends Piece {
 		ArrayList<Square> moves = new ArrayList<Square>();
 		Team team = temp.getPiece().getTeam();
 		if(team.equals(Team.WHITE) ) {
-			if(b.getN(temp) != null) {
+			if(b.getN(temp) != null && b.getN(temp).getPiece() == null ) {
 				moves.add(b.getN(temp));
 				if(temp.getY() == 2 && temp.getPiece() == null) {
 					moves.add(b.getN(b.getN(temp)));
 				}
 			}
-			if(b.getNE(temp).getPiece().getTeam().equals(Team.BLACK)) {
+			if( b.getNE(temp) != null &&
+					b.getNE(temp).getPiece() != null &&
+					b.getNE(temp).getPiece().getTeam().equals(Team.BLACK)) {
 				moves.add(b.getNE(temp));
 			}
-			if(b.getNW(temp).getPiece().getTeam().equals(Team.BLACK)) {
+			if( b.getNW(temp) != null && 
+					b.getNW(temp).getPiece() != null &&
+					b.getNW(temp).getPiece().getTeam().equals(Team.BLACK)) {
 				moves.add(b.getNW(temp));
 			}
 		}
