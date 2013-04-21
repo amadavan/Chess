@@ -27,15 +27,15 @@ public class Board {
 	}
 	
 	public Square getN(Square s) {
-		if ( _grid.size() > s.getY() + 1 )
-			return _grid.get(s.getY() + 1).get(s.getX());
+		if ( 0 <= s.getY() - 1 )
+			return _grid.get(s.getY() - 1).get(s.getX());
 		else
 			return null;
 	}
 	
 	public Square getNE(Square s) {
-		if ( _grid.size() > s.getY() + 1 && _grid.get(0).size() > s.getX() + 1 )
-			return _grid.get(s.getY() + 1).get(s.getX() + 1);
+		if ( 0 <= s.getY() - 1 && _grid.get(0).size() > s.getX() + 1 )
+			return _grid.get(s.getY() - 1).get(s.getX() + 1);
 		else
 			return null;
 	}
@@ -48,22 +48,22 @@ public class Board {
 	}
 	
 	public Square getSE(Square s) {
-		if ( 0 <= s.getY() - 1 && _grid.get(0).size() > s.getX() + 1 )
-			return _grid.get(s.getY() - 1).get(s.getX() + 1);
+		if ( _grid.size() > s.getY() + 1 && _grid.get(0).size() > s.getX() + 1 )
+			return _grid.get(s.getY() + 1).get(s.getX() + 1);
 		else
 			return null;
 	}
 	
 	public Square getS(Square s) {
-		if ( 0 <= s.getY() - 1 )
-			return _grid.get(s.getY() - 1).get(s.getX());
+		if ( _grid.size() > s.getY() + 1 )
+			return _grid.get(s.getY() + 1).get(s.getX());
 		else
 			return null;
 	}
 	
 	public Square getSW(Square s) {
-		if ( 0 <= s.getY() - 1 && 0 <= s.getX() - 1 )
-			return _grid.get(s.getY() - 1).get(s.getX() - 1);
+		if ( _grid.size() > s.getY() + 1 && 0 <= s.getX() - 1 )
+			return _grid.get(s.getY() + 1).get(s.getX() - 1);
 		else
 			return null;
 	}
@@ -76,8 +76,8 @@ public class Board {
 	}
 	
 	public Square getNW(Square s) {
-		if ( _grid.size() > s.getY() + 1 && 0 <= s.getX() - 1 )
-			return _grid.get(s.getY() + 1).get(s.getX() - 1);
+		if ( 0 <= s.getY() - 1 && 0 <= s.getX() - 1 )
+			return _grid.get(s.getY() - 1).get(s.getX() - 1);
 		else
 			return null;
 	}
