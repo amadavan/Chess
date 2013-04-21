@@ -42,7 +42,7 @@ public class Board {
 	
 	public Square getE(Square s) {
 		if ( _grid.get(0).size() > s.getX() + 1 )
-			return _grid.get(s.getY()).get(s.getX());
+			return _grid.get(s.getY()).get(s.getX() + 1);
 		else
 			return null;
 	}
