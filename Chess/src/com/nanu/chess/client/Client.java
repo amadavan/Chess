@@ -26,11 +26,19 @@ public class Client extends Thread {
 		String[] move_square = move.split(",");
 		_board.movePiece(
 				_board.getSquare(move_square[0].trim().charAt(0)-'0', move_square[0].trim().charAt(1)-'0'),
-				_board.getSquare(move_square[1].trim().charAt(0)-'0', move_square[1].trim().charAt(1)-'0'));
+				_board.getSquare(move_square[1].trim().charAt(0)-'0', move_square[1].trim().charAt(1)-'0')
+		);
 	}
 	
 	private String getMove() {
+		_boardPanel.getMove();
 		return "";
+	}
+	
+	private void reset(String teamParam) {
+		Team team = Team.valueOf(teamParam);
+		_board.resetGrid(team);
+		_boardPanel.setTeam(team);
 	}
 	
 	public void parseCommand(String s) {
@@ -45,17 +53,19 @@ public class Client extends Thread {
 		}
 		switch(c) {
 			case MOVE: movePiece(params);
-			case GETMOVE: getMove();
+			case GETMOVE:  System.out.println("Getting move"); getMove();
 				break;
-			case RESET: _board.resetGrid(Team.valueOf(params));
+			case RESET: reset(params);
+				break;
 		}
 	}
 	
 	@Override
 	public void run() {
 		String s;
-		if ( (s = _connection.receive()) != null )
-			parseCommand(s);
+		while (true)
+			if ( (s = _connection.receive()) != null )
+				parseCommand(s);
 	}
 	
 }

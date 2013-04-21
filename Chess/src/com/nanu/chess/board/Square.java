@@ -27,5 +27,9 @@ public class Square {
 	public Piece getPiece() {
 		return _piece;
 	}
+	
+	public String toString() {
+		return _x+""+_y;
+	}
 
 }

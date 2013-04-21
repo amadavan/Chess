@@ -24,6 +24,8 @@ public class ChessServer extends Thread {
 				ArrayList<ServerConnection> players = new ArrayList<ServerConnection>();
 				for (int i = 0; i < 2; i++)
 					players.add(new ServerConnection(_serverSocket.accept()));
+				System.out
+						.println("ChessServer@run: Starting ChessThread.");
 				new ChessThread(players);
 			}
 		} catch (IOException e) {

@@ -1,12 +1,15 @@
 package com.nanu.chess.gui;
 
 import java.awt.Graphics;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 import javax.swing.JPanel;
 
 import com.nanu.chess.board.Board;
 import com.nanu.chess.board.Square;
+import com.nanu.chess.gui.GUIConstants;
 import com.nanu.chess.support.Team;
 
 @SuppressWarnings("serial")
@@ -22,6 +25,7 @@ public class BoardPanel extends JPanel {
 	
 	public void setTeam(Team team) {
 		_team = team;
+		repaint();
 	}
 	
 	public void paintComponent(Graphics g) {
@@ -29,11 +33,68 @@ public class BoardPanel extends JPanel {
 		for ( int i = 0; i < 8; i++ ) {
 			for ( int j = 0; j < 8; j++ ) {
 				if ( ((i+j)%2 == 0 && _team.equals(Team.WHITE)) || ((i+j)%2 == 1 && _team.equals(Team.BLACK)) )
-					g.setColor(GUIConstants.square.WHITE);
-				if ( ((i+j)%2 == 0 && _team.equals(Team.BLACK)) || ((i+j)%2 == 1 && _team.equals(Team.WHITE)) )
 					g.setColor(GUIConstants.square.BLACK);
+				if ( ((i+j)%2 == 0 && _team.equals(Team.BLACK)) || ((i+j)%2 == 1 && _team.equals(Team.WHITE)) )
+					g.setColor(GUIConstants.square.WHITE);
+				g.fillRect(GUIConstants.PADDING+i*GUIConstants.SQUARE_WIDTH,
+						GUIConstants.PADDING+j*GUIConstants.SQUARE_HEIGHT,
+						GUIConstants.SQUARE_WIDTH,
+						GUIConstants.SQUARE_HEIGHT);
 			}
 		}
 	}
 	
+	public String getMove() {
+		boolean validMove = false;
+		ClickListener click = new ClickListener();
+		this.addMouseListener(click);
+		Square start = null, end = null;
+		while( !validMove ) {
+			synchronized(lock) {
+				try {
+					lock.wait();
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}
+			if ( curSquare.getPiece() != null && curSquare.getPiece().getTeam().equals(_team) )
+				start = curSquare;
+			else if ( start != null && start.getPiece().getLegalMoves(_board, start).contains(curSquare) ) {
+				end = curSquare;
+				validMove = true;
+			}	
+
+			System.out.println(curSquare.getX()+" "+curSquare.getY());
+			if ( curSquare.getPiece() != null )
+				System.out.println(curSquare.getPiece().getClass().toString());
+			if ( start != null ) {
+				System.out.println(start.getX()+" "+start.getY());
+				System.out.println( start.getPiece().getLegalMoves(_board, start).toString() );
+			}
+			if ( validMove )
+				System.out.println("Yes");
+			System.out.println();
+			
+		}
+		System.out.println(start.getX()+""+start.getY()+","+end.getX()+""+end.getY());
+		return getMove();
+//		return start.getX()+""+start.getY()+","+end.getX()+""+end.getY();
+	}
+	
+	public class ClickListener extends MouseAdapter {
+		public void mouseClicked(MouseEvent e) {
+			int x = e.getX();
+			int y = e.getY();
+			if ( x > GUIConstants.PADDING && x < GUIConstants.DISPLAY_WIDTH - GUIConstants.PADDING &&
+					y > GUIConstants.PADDING && y < GUIConstants.DISPLAY_HEIGHT - GUIConstants.PADDING ) {
+				x = (x - GUIConstants.PADDING)/GUIConstants.SQUARE_WIDTH;
+				y = (y - GUIConstants.PADDING)/GUIConstants.SQUARE_HEIGHT;
+				curSquare = _board.getSquare(x,y);
+				synchronized(lock) { lock.notify(); }
+			}
+		}
+	}
+	
+	private Object lock = new Object();
+	private Square curSquare;
 }
