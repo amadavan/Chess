@@ -5,20 +5,21 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 
 import com.nanu.chess.board.Board;
+import com.nanu.chess.gui.BoardPanel;
 import com.nanu.chess.support.Command;
+import com.nanu.chess.support.Team;
 
 public class Client extends Thread {
 	
 	private ClientConnection _connection;
+	private BoardPanel _boardPanel;
 	private Board _board;
 	
-	public Client(Socket socket) throws IOException {
-		_connection = new ClientConnection(socket);
-	}
-	
-	public Client(String host, int port) throws UnknownHostException, IOException {
+	public Client(String host, int port, Board board, BoardPanel boardPanel) throws UnknownHostException, IOException {
 		Socket _socket = new Socket(host, port);
 		_connection = new ClientConnection(_socket);
+		_board = board;
+		_boardPanel = boardPanel;
 	}
 	
 	private void movePiece(String move) {
@@ -38,7 +39,7 @@ public class Client extends Thread {
 		String params = "";
 		if ( loc != -1 ) {
 			c = Command.valueOf(s.substring(0,loc));
-			params = s.substring(loc+1);
+			params = s.substring(loc+1).trim();
 		} else {
 			c = Command.valueOf(s);
 		}
@@ -46,6 +47,7 @@ public class Client extends Thread {
 			case MOVE: movePiece(params);
 			case GETMOVE: getMove();
 				break;
+			case RESET: _board.resetGrid(Team.valueOf(params));
 		}
 	}
 	

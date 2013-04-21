@@ -15,9 +15,13 @@ public class BoardPanel extends JPanel {
 	Board _board;
 	Team _team;
 	
-	public BoardPanel (Team team, Board board) {
-		_team = team;
+	public BoardPanel (Board board) {
 		_board = board;
+		_team = Team.WHITE;
+	}
+	
+	public void setTeam(Team team) {
+		_team = team;
 	}
 	
 	public void paintComponent(Graphics g) {
