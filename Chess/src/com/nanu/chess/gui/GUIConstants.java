@@ -41,7 +41,7 @@ public class GUIConstants {
 		
 		public static ImageIcon getIcon(Piece p) {
 			if ( p instanceof Pawn ) {
-				if ( p.getTeam().equals(Team.WHITE) )
+				if ( p.getTeam().equals(Team.WHITE) ) 
 					return WHITE_PAWN;
 				else
 					return BLACK_PAWN;
