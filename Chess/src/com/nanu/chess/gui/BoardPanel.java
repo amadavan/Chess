@@ -73,6 +73,7 @@ public class BoardPanel extends JPanel {
 				curSquare = null;
 				validMove = true;
 			} else {
+				start = null;
 				curSquare = null;
 				repaint();
 			}
