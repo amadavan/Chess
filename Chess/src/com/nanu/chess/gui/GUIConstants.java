@@ -39,6 +39,9 @@ public class GUIConstants {
 		public static final ImageIcon BLACK_QUEEN	= new ImageIcon(GUIConstants.class.getResource(ROOT+"black_queen.png"));
 		public static final ImageIcon BLACK_KING	= new ImageIcon(GUIConstants.class.getResource(ROOT+"black_king.png"));
 		
+		public static final int ICON_WIDTH			= WHITE_PAWN.getIconWidth();
+		public static final int ICON_HEIGHT			= WHITE_PAWN.getIconHeight();
+		
 		public static ImageIcon getIcon(Piece p) {
 			if ( p instanceof Pawn ) {
 				if ( p.getTeam().equals(Team.WHITE) ) 

@@ -40,8 +40,10 @@ public class BoardPanel extends JPanel {
 						GUIConstants.SQUARE_HEIGHT);
 				if ( _board.getSquare(i,j).getPiece() != null ) {
 					GUIConstants.piece.getIcon(_board.getSquare(i,j).getPiece()).paintIcon( this, g,
-							GUIConstants.PADDING+i*GUIConstants.SQUARE_WIDTH,
-							GUIConstants.PADDING+j*GUIConstants.SQUARE_HEIGHT);
+							GUIConstants.PADDING+i*GUIConstants.SQUARE_WIDTH+
+								(GUIConstants.SQUARE_WIDTH-GUIConstants.piece.ICON_WIDTH)/2,
+							GUIConstants.PADDING+j*GUIConstants.SQUARE_HEIGHT+
+								(GUIConstants.SQUARE_HEIGHT-GUIConstants.piece.ICON_HEIGHT)/2);
 				}
 			}
 		}
