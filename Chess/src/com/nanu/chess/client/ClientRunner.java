@@ -34,9 +34,9 @@ public class ClientRunner {
     		_port = Integer.parseInt(prop.getProperty("port"));
 		} catch (IOException e) {
 			_host = "127.0.0.1";
-			_port = 5000;
+			_port = 7000;
 		} catch (NumberFormatException e) {
-			_port = 5000;
+			_port = 7000;
 		}
 	}
 	
