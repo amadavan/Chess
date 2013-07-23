@@ -36,7 +36,7 @@ public class ChessServer extends Thread {
 
 	public static void main(String[] args) {
 		if (args.length != 1)
-			System.out.println("Usage: java BridgeServer port");
+			System.out.println("Usage: java ChessServer port");
 		else {
 			try {
 				new ChessServer(Integer.parseInt(args[0])).start();
