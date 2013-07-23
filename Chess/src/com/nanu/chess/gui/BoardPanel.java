@@ -34,6 +34,8 @@ public class BoardPanel extends JPanel {
 					g.setColor(GUIConstants.square.BLACK);
 				if ( ((i+j)%2 == 0 && _team.equals(Team.BLACK)) || ((i+j)%2 == 1 && _team.equals(Team.WHITE)) )
 					g.setColor(GUIConstants.square.WHITE);
+				if ( _board.getSquare(i, j) == curSquare )
+					g.setColor(GUIConstants.square.SELECTED);
 				g.fillRect(GUIConstants.PADDING+i*GUIConstants.SQUARE_WIDTH,
 						GUIConstants.PADDING+j*GUIConstants.SQUARE_HEIGHT,
 						GUIConstants.SQUARE_WIDTH,
@@ -62,13 +64,20 @@ public class BoardPanel extends JPanel {
 					e.printStackTrace();
 				}
 			}
-			if ( curSquare.getPiece() != null && curSquare.getPiece().getTeam().equals(_team) )
+			if ( curSquare.getPiece() != null && curSquare.getPiece().getTeam().equals(_team) ) {
 				start = curSquare;
+				repaint();
+			}
 			else if ( start != null && start.getPiece().getLegalMoves(_board, start).contains(curSquare) ) {
 				end = curSquare;
+				curSquare = null;
 				validMove = true;
+			} else {
+				curSquare = null;
+				repaint();
 			}
 		}
+		this.removeMouseListener(click);
 		end.setPiece(start.getPiece());
 		start.setPiece(null);
 		repaint();
@@ -91,4 +100,6 @@ public class BoardPanel extends JPanel {
 	
 	private Object lock = new Object();
 	private Square curSquare;
+	@SuppressWarnings("unused")
+	private Square hoverSquare;
 }

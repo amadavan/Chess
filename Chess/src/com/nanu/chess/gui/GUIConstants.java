@@ -21,6 +21,9 @@ public class GUIConstants {
 	public static class square {
 		public static final Color BLACK		= new Color(150,150,150);
 		public static final Color WHITE		= new Color(50,50,50);
+		public static final Color HOVER_BLACK = new Color(140,140,180);
+		public static final Color HOVER_WHITE = new Color(60,60,80);
+		public static final Color SELECTED	= new Color(100,120,180);
 	}
 	
 	public static class piece {
