@@ -6,6 +6,7 @@ public class Square {
 	private int _x, _y;
 	private Piece _piece;
 
+
 	public Square(int x, int y) {
 		_x = x;
 		_y = y;
