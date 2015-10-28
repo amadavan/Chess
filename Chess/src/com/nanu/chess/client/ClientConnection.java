@@ -11,6 +11,7 @@ public class ClientConnection extends Connection {
 		super(socket);
 	}
 
+
 	public String receive() {
 		String s = null;
 		try {
