@@ -13,6 +13,7 @@ import com.nanu.chess.support.Team;
 public class Board {
 	
 	private ArrayList< ArrayList<Square> > _grid;
+
 	
 	public Board() {
 		_grid = new ArrayList< ArrayList<Square> > ();
