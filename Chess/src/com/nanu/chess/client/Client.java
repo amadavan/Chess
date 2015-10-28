@@ -14,6 +14,7 @@ public class Client extends Thread {
 	private ClientConnection _connection;
 	private BoardPanel _boardPanel;
 	private Board _board;
+
 	
 	public Client(String host, int port, Board board, BoardPanel boardPanel) throws UnknownHostException, IOException {
 		Socket _socket = new Socket(host, port);
